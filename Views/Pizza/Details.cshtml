@@ -1,0 +1,47 @@
+﻿@model BO.Pizza
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details d'une pizza</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            foreach (var ingredient in Model.Ingredients)
+            {
+            @Html.DisplayFor( ingredient)<br />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </dt>
+
+        <dd>
+            @if (Model.Couleur != null)
+            {
+                @Html.DisplayFor(model => model.Couleur.Name)
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>
